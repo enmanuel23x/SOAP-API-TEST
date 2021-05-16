@@ -26,6 +26,8 @@ Aspectos a considerar:
   5. Ejecutar `npm start` esto levantar la aplicacion.
 
 #### Configuraciones
+**Imporante: la base de datos debe ser creada manualmente antes de configurar e iniciar el proyecto (las tablas son generadas al iniciar el mismo)**.
+
 Editar el archivo `config.js` que se encuentran en la ruta `<<root>>/src/config`.
 
 **`config.js`**

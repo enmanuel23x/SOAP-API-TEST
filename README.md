@@ -81,6 +81,6 @@ module.exports = {
   - `email_pass` contraseña del correo **(no alterar este campo)**.
  
 #### Recomendaciones
- - *(Se recomienda leer mas en EL README.md en el repositorio **[front-end](http://localhost:2001)**.)*.
- - *(Se recomienda leer mas en EL README.md en el repositorio **[servicio REST](http://localhost:2001)**.)*.
+ - *(Se recomienda leer mas en EL README.md en el repositorio **[front-end](https://github.com/enmanuel23x/FRONT-END-TEST)**.)*.
+ - *(Se recomienda leer mas en EL README.md en el repositorio **[servicio REST](https://github.com/enmanuel23x/REST-API_TEST)**.)*.
 

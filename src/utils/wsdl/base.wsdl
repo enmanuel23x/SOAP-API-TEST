@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <definitions> must be the root of the WSDL document -->
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <!-- WSDL TYPES: definition of the data types that are used in the web service -->
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="runRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element empty-array="true"></s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="runResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="unbounded" name="result" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <!-- MESSAGES: defines the data being exchanged between the service and client -->
+  <wsdl:message name="runSoapIn">
+    <wsdl:part name="parameters" element="tns:runRequest"/>
+  </wsdl:message>
+  <wsdl:message name="runSoapOut">
+    <wsdl:part name="parameters" element="tns:runResponse"/>
+  </wsdl:message>
+  <!-- PORT TYPES: defines the complete communication operation (one way/round trip) -->
+  <wsdl:portType name="runSoapPort">
+    <!-- The operation name must be the same as the one specified in the service object -->
+    <wsdl:operation name="runAction">
+      <wsdl:input message="tns:runSoapIn"/>
+      <wsdl:output message="tns:runSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!-- BINDING: provides details on how a portType operation will actually be transmitted -->
+  <wsdl:binding name="ServiceNameSoapBinding" type="tns:runSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="runAction">
+      <soap:operation soapAction="runAction" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <!-- SERVICE:  -->
+  <wsdl:service name="ServiceName">
+    <wsdl:port name="ServiceNameSoapPort" binding="tns:ServiceNameSoapBinding" array="true">
+      <soap:address location="http://localhost:8000/path"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
